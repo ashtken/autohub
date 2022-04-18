@@ -22,20 +22,24 @@ const HeaderContainer = styled.header`
 		padding-right: 0.5rem;
 		& > a {
 			:hover {
-				color: #afafaf;
+				color: #58c2ff;
 			}
 		}
 	}
+`;
+
+const Logo = styled.a`
+	color: #58c2ff;
 `;
 
 const MobileHeader = () => {
 	return (
 		<HeaderContainer>
 			<div>
-				<Link href={"/"}>
-					<a>
+				<Link href={"/"} passHref>
+					<Logo>
 						<FaCar />
-					</a>
+					</Logo>
 				</Link>
 				<Link href={"/"}>
 					<a>

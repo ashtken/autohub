@@ -5,17 +5,25 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 const HeaderContainer = styled.header`
-	position: fixed;
+	/* position: fixed; */
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: fit-content;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 97vh;
+	align-items: center;
 	color: #f7f7f7;
 	font-size: xx-large;
 	font-weight: 500;
-	margin: 1rem;
+	padding-left: 1rem;
 	@media (max-width: 400px) {
 		display: none;
+	}
+	@media (min-width: 1301px) {
+		align-items: flex-start;
+		width: fit-content;
 	}
 	& > div {
 		& > a {
@@ -23,9 +31,9 @@ const HeaderContainer = styled.header`
 			align-items: center;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
-			padding-left: 1rem;
+
 			:hover {
-				color: #afafaf;
+				color: #58c2ff;
 			}
 			& > span {
 				margin-left: 1rem;
@@ -39,18 +47,22 @@ const HeaderContainer = styled.header`
 	}
 `;
 
+const Logo = styled.a`
+	color: #58c2ff;
+	text-align: center;
+`;
+
 const Header = () => {
 	return (
 		<HeaderContainer>
 			<div>
-				<Link href={"/"}>
-					<a>
+				<Link href={"/"} passHref>
+					<Logo>
 						<FaCar />
-					</a>
+					</Logo>
 				</Link>
-				<div>
-					<Nav />
-				</div>
+
+				<Nav />
 			</div>
 			<div>
 				<Link href={"/"}>
