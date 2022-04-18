@@ -16,29 +16,34 @@ const NavContainer = styled.nav`
 		overflow: hidden;
 		position: fixed;
 		bottom: 0;
-		right: 0;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		background-color: #060c10;
-		border-top: solid #464646 0.1rem;
+		/* border-top: solid #464646 0.1rem; */
+		border-radius: 25px;
+		margin-bottom: 0.5rem;
 	}
 	@media (min-width: 401px) {
 		display: flex;
 		flex-direction: column;
 		font-size: large;
+		padding-top: 2rem;
+	}
+	@media (min-width: 1301px) {
+		align-items: flex-start;
+		width: fit-content;
 	}
 	& > a {
 		:hover {
-			color: #afafaf;
+			color: #58c2ff;
 		}
 		@media (min-width: 401px) {
 			display: flex;
+			justify-content: center;
 			align-items: center;
-			padding-top: 1rem;
-			padding-bottom: 1rem;
-			padding-left: 1rem;
+			padding-bottom: 2rem;
 		}
 		& > span {
 			margin-left: 1rem;
