@@ -14,7 +14,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 						font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 							Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
 							sans-serif;
-						background-color: #1a1919;
+						background-color: #202124;
 					}
 					a {
 						color: inherit;

@@ -3,9 +3,10 @@ import { FaCar } from "react-icons/fa";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import ProfilePicture from "../ProfilePicture";
 
 const HeaderContainer = styled.header`
-	/* position: fixed; */
 	top: 0;
 	left: 0;
 	height: 100vh;
@@ -53,6 +54,7 @@ const Logo = styled.a`
 `;
 
 const Header = () => {
+	const { data: session } = useSession();
 	return (
 		<HeaderContainer>
 			<div>
@@ -61,16 +63,28 @@ const Header = () => {
 						<FaCar />
 					</Logo>
 				</Link>
-
 				<Nav />
 			</div>
 			<div>
-				<Link href={"/"}>
-					<a>
-						<HiOutlineUserCircle />
-						<span>Ashley Kennedy</span>
-					</a>
-				</Link>
+				{session ? (
+					<Link href={"/account"}>
+						<a>
+							{session.user?.image ? (
+								<ProfilePicture width={35} height={35} />
+							) : (
+								<HiOutlineUserCircle />
+							)}
+							<span>{session.user?.name}</span>
+						</a>
+					</Link>
+				) : (
+					<Link href={"/api/auth/signin"}>
+						<a>
+							<HiOutlineUserCircle />
+							<span>Sign in/Join</span>
+						</a>
+					</Link>
+				)}
 			</div>
 		</HeaderContainer>
 	);
