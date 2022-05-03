@@ -20,8 +20,7 @@ const NavContainer = styled.nav`
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		background-color: #060c10;
-		/* border-top: solid #464646 0.1rem; */
+		background-color: #13151d;
 		border-radius: 25px;
 		margin-bottom: 0.5rem;
 	}
@@ -36,12 +35,13 @@ const NavContainer = styled.nav`
 		width: fit-content;
 	}
 	& > a {
+		transition: 0.3s;
 		:hover {
-			color: #58c2ff;
+			color: #016cf9;
 		}
 		@media (min-width: 401px) {
 			display: flex;
-			justify-content: center;
+			justify-content: start;
 			align-items: center;
 			padding-bottom: 2rem;
 		}

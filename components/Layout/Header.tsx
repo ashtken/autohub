@@ -3,9 +3,10 @@ import { FaCar } from "react-icons/fa";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import ProfilePicture from "../ProfilePicture";
 
 const HeaderContainer = styled.header`
-	/* position: fixed; */
 	top: 0;
 	left: 0;
 	height: 100vh;
@@ -26,14 +27,17 @@ const HeaderContainer = styled.header`
 		width: fit-content;
 	}
 	& > div {
+		@media (min-width: 1301px) {
+			width: 10rem;
+		}
 		& > a {
 			display: flex;
 			align-items: center;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
-
+			transition: 0.3s;
 			:hover {
-				color: #58c2ff;
+				color: #016cf9;
 			}
 			& > span {
 				margin-left: 1rem;
@@ -48,11 +52,12 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.a`
-	color: #58c2ff;
+	color: #0063e5;
 	text-align: center;
 `;
 
 const Header = () => {
+	const { data: session } = useSession();
 	return (
 		<HeaderContainer>
 			<div>
@@ -61,16 +66,28 @@ const Header = () => {
 						<FaCar />
 					</Logo>
 				</Link>
-
 				<Nav />
 			</div>
 			<div>
-				<Link href={"/"}>
-					<a>
-						<HiOutlineUserCircle />
-						<span>Ashley Kennedy</span>
-					</a>
-				</Link>
+				{session ? (
+					<Link href={"/account"}>
+						<a>
+							{session.user?.image ? (
+								<ProfilePicture width={35} height={35} />
+							) : (
+								<HiOutlineUserCircle />
+							)}
+							<span>{session.user?.name}</span>
+						</a>
+					</Link>
+				) : (
+					<Link href={"/api/auth/signin"}>
+						<a>
+							<HiOutlineUserCircle />
+							<span>Sign in/Join</span>
+						</a>
+					</Link>
+				)}
 			</div>
 		</HeaderContainer>
 	);

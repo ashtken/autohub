@@ -6,8 +6,13 @@ import { ReactNode } from "react";
 
 const LayoutContainer = styled.div`
 	display: flex;
-	@media (max-width: 400px) {
-		flex-direction: column;
+	& > main {
+		width: 100%;
+	}
+
+	flex-direction: column;
+	@media (min-width: 401px) {
+		flex-direction: row;
 	}
 `;
 
