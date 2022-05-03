@@ -11,7 +11,7 @@ const HeaderContainer = styled.header`
 	font-size: x-large;
 	font-weight: 500;
 	height: 3rem;
-	background-color: #060c10;
+	background-color: #13151d;
 	border-bottom: solid #464646 0.1rem;
 	@media (min-width: 401px) {
 		display: none;
@@ -23,15 +23,16 @@ const HeaderContainer = styled.header`
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		& > a {
+			transition: 0.3s;
 			:hover {
-				color: #58c2ff;
+				color: #016cf9;
 			}
 		}
 	}
 `;
 
 const Logo = styled.a`
-	color: #58c2ff;
+	color: #0063e5;
 `;
 
 const MobileHeader = () => {

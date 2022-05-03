@@ -2,14 +2,13 @@ import styled from "@emotion/styled";
 import { HiOutlinePlusSm } from "react-icons/hi";
 
 const ListingsContainer = styled.div`
-	background-color: #1e36441c;
-	color: #58c2ff;
+	background-color: #13151d;
+	color: #fff;
 	font-weight: 500;
-	border: 2px #58c2ff solid;
 	border-radius: 5px;
 	padding: 1rem;
-	transition: 0.3s;
 	overflow: hidden;
+	width: 100%;
 	& > div {
 		display: flex;
 		justify-content: space-between;
@@ -19,10 +18,34 @@ const ListingsContainer = styled.div`
 	}
 `;
 
+const NoListings = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 15rem;
+	margin-bottom: 15rem;
+	& > button {
+		cursor: pointer;
+		border: 0;
+		width: 10rem;
+		background-color: #0063e5;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		color: #fff;
+		font-weight: 600;
+		border-radius: 5px;
+		transition: 0.3s;
+		&:hover {
+			background-color: #016cf9;
+		}
+	}
+`;
+
 const ListingsButton = styled.button`
 	cursor: pointer;
 	border: 0;
-	background-color: #58c2ff;
+	background-color: #0063e5;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 	padding-left: 1rem;
@@ -32,7 +55,7 @@ const ListingsButton = styled.button`
 	border-radius: 5px;
 	transition: 0.3s;
 	&:hover {
-		background-color: #36aaee;
+		background-color: #016cf9;
 	}
 `;
 
@@ -45,6 +68,10 @@ const Listings = () => {
 					<HiOutlinePlusSm />
 				</ListingsButton>
 			</div>
+			<NoListings>
+				<h1>No Listings!</h1>
+				<button>Add Listing</button>
+			</NoListings>
 		</ListingsContainer>
 	);
 };

@@ -27,14 +27,17 @@ const HeaderContainer = styled.header`
 		width: fit-content;
 	}
 	& > div {
+		@media (min-width: 1301px) {
+			width: 10rem;
+		}
 		& > a {
 			display: flex;
 			align-items: center;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
-
+			transition: 0.3s;
 			:hover {
-				color: #58c2ff;
+				color: #016cf9;
 			}
 			& > span {
 				margin-left: 1rem;
@@ -49,7 +52,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.a`
-	color: #58c2ff;
+	color: #0063e5;
 	text-align: center;
 `;
 

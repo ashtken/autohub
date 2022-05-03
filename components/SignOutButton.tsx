@@ -5,7 +5,7 @@ const Button = styled.button`
 	cursor: pointer;
 	border: 0;
 	width: 100%;
-	background-color: #58c2ff;
+	background-color: #0063e5;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 	color: #fff;
@@ -13,7 +13,7 @@ const Button = styled.button`
 	border-radius: 5px;
 	transition: 0.3s;
 	&:hover {
-		background-color: #36aaee;
+		background-color: #016cf9;
 	}
 `;
 

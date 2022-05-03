@@ -8,10 +8,9 @@ import {
 } from "react-icons/hi";
 
 const AccountDetailsContainer = styled.div`
-	background-color: #1e36441c;
-	color: #58c2ff;
+	background-color: #13151d;
+	color: #fff;
 	font-weight: 500;
-	border: 2px #58c2ff solid;
 	border-radius: 5px;
 	padding: 1rem;
 	transition: 0.3s;
@@ -55,7 +54,7 @@ const EditButton = styled.button`
 	cursor: pointer;
 	border: 0;
 	width: 100%;
-	background-color: #58c2ff;
+	background-color: #0063e5;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 	margin-top: 1rem;
@@ -64,11 +63,29 @@ const EditButton = styled.button`
 	border-radius: 5px;
 	transition: 0.3s;
 	&:hover {
-		background-color: #36aaee;
+		background-color: #016cf9;
 	}
 `;
 
-const AccountData = () => {
+export type UserProps = {
+	image: string | null;
+	email: string | null;
+	name: string | null;
+	contactNumber: string | null;
+	address: [
+		{
+			firstLine: string;
+			secondLine: string | null;
+			thirdLine: string | null;
+			city: string;
+			county: string | null;
+			postcode: string;
+			country: string;
+		}
+	];
+};
+
+const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
 	const { data: session } = useSession();
 	return (
 		<AccountDetailsContainer>
@@ -76,31 +93,38 @@ const AccountData = () => {
 				<div>
 					<HiOutlineUser />
 				</div>
-				<h1>{session?.user?.name}</h1>
+				<h1>{user.name ? user.name : "-"}</h1>
 			</ContactDetails>
 			<ContactDetails>
 				<div>
 					<HiOutlineMail />
 				</div>
-				<h1>{session?.user?.email}</h1>
+				<h1>{user.email ? user.email : "-"}</h1>
 			</ContactDetails>
 			<ContactDetails>
 				<div>
 					<HiOutlinePhone />
 				</div>
-				<h1>07429954125</h1>
+				<h1>{user.contactNumber ? user.contactNumber : "-"}</h1>
 			</ContactDetails>
 			<AddressContainer>
 				<div>
 					<HiOutlineHome />
 				</div>
 				<Address>
-					<h2>FirstLine</h2>
-					<h2>SecondLine</h2>
-					<h2>ThirdLine</h2>
-					<h2>City</h2>
-					<h2>County</h2>
-					<h2>Postcode</h2>
+					{user.address[0] ? (
+						<>
+							<h2>{user.address[0].firstLine}</h2>
+							<h2>{user.address[0].secondLine}</h2>
+							<h2>{user.address[0].thirdLine}</h2>
+							<h2>{user.address[0].city}</h2>
+							<h2>{user.address[0].county}</h2>
+							<h2>{user.address[0].postcode}</h2>
+							<h2>{user.address[0].country}</h2>
+						</>
+					) : (
+						"-"
+					)}
 				</Address>
 			</AddressContainer>
 			<EditButton>Edit</EditButton>
