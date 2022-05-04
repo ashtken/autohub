@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 import {
 	HiOutlinePhone,
 	HiOutlineHome,
 	HiOutlineMail,
 	HiOutlineUser,
 } from "react-icons/hi";
+import Modal from "./Modal";
 
 const AccountDetailsContainer = styled.div`
 	background-color: #13151d;
@@ -86,6 +88,8 @@ export type UserProps = {
 };
 
 const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
+	const [showModal, setShowModal] = useState(false);
+
 	const { data: session } = useSession();
 	return (
 		<AccountDetailsContainer>
@@ -112,7 +116,7 @@ const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
 					<HiOutlineHome />
 				</div>
 				<Address>
-					{user.address[0] ? (
+					{user.address ? (
 						<>
 							<h2>{user.address[0].firstLine}</h2>
 							<h2>{user.address[0].secondLine}</h2>
@@ -127,7 +131,14 @@ const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
 					)}
 				</Address>
 			</AddressContainer>
-			<EditButton>Edit</EditButton>
+			<EditButton onClick={() => setShowModal(true)}>Edit</EditButton>
+			<Modal
+				onClose={() => setShowModal(false)}
+				show={showModal}
+				setShow={setShowModal}
+			>
+				Hello from the modal!
+			</Modal>
 		</AccountDetailsContainer>
 	);
 };
