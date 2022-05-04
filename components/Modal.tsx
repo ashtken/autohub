@@ -10,15 +10,20 @@ import styled from "@emotion/styled";
 import { HiX } from "react-icons/hi";
 
 const StyledModalBody = styled.div`
-	padding-top: 10px;
+	padding-top: 1rem;
 `;
 
 const StyledModalHeader = styled.div`
 	display: flex;
-	justify-content: flex-end;
-	font-size: 25px;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.5rem;
+	& > h1 {
+		color: #fff;
+		font-size: large;
+	}
 	& > a {
-		color: white;
+		color: #fff;
 	}
 `;
 
@@ -43,8 +48,8 @@ const StyledModalOverlay = styled.div`
 `;
 
 const StyledModalWrapper = styled.div`
-	width: 500px;
-	height: 600px;
+	width: 32rem;
+	height: 38rem;
 `;
 
 type Props = {
@@ -97,6 +102,7 @@ const Modal = ({ show, setShow, onClose, children }: Props) => {
 			<StyledModalWrapper>
 				<StyledModal>
 					<StyledModalHeader>
+						<h1>Edit Profile</h1>
 						<a href="#" onClick={handleCloseClick}>
 							<HiX />
 						</a>

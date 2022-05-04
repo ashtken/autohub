@@ -8,6 +8,7 @@ import {
 	HiOutlineUser,
 } from "react-icons/hi";
 import Modal from "./Modal";
+import UserDetailsForm from "./UserDetailsForm";
 
 const AccountDetailsContainer = styled.div`
 	background-color: #13151d;
@@ -69,7 +70,7 @@ const EditButton = styled.button`
 	}
 `;
 
-export type UserProps = {
+type UserProps = {
 	image: string | null;
 	email: string | null;
 	name: string | null;
@@ -137,7 +138,7 @@ const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
 				show={showModal}
 				setShow={setShowModal}
 			>
-				Hello from the modal!
+				<UserDetailsForm />
 			</Modal>
 		</AccountDetailsContainer>
 	);
