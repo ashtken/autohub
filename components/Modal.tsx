@@ -85,10 +85,10 @@ const Modal = ({ show, setShow, onClose, children }: Props) => {
 		setIsBrowser(true);
 
 		document.addEventListener("keydown", keyPress);
-		window.addEventListener("click", MouseClick);
+		document.addEventListener("click", MouseClick);
 		return () => {
 			document.removeEventListener("click", MouseClick);
-			window.removeEventListener("keydown", keyPress);
+			document.removeEventListener("keydown", keyPress);
 		};
 	}, [keyPress, MouseClick]);
 

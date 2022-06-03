@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import { useSession, signIn, getSession } from "next-auth/react";
 import ProfilePicture from "../components/ProfilePicture";
-import AccountData, { UserProps } from "../components/AccountData";
+import AccountData from "../components/AccountData";
 import SignOutButton from "../components/SignOutButton";
 import Listings from "../components/Listings";
 import prisma from "../lib/prisma";
@@ -54,6 +54,28 @@ const AccountDataContainer = styled.div`
 	}
 `;
 
+export type User = {
+	email: string | null;
+	name: string;
+	image: string | null;
+	contactNumber: string | null;
+	address: Address[];
+};
+
+type Address = {
+	firstLine: string;
+	secondLine: string | null;
+	thirdLine: string | null;
+	city: string;
+	county: string | null;
+	postcode: string;
+	country: string;
+};
+
+type Props = {
+	user: User;
+};
+
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 	const session = await getSession({ req });
 	if (!session) {
@@ -86,17 +108,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 	return { props: { user } };
 };
 
-type Props = {
-	user: UserProps;
-};
-
 const Account: NextPage<Props> = (props) => {
 	const { data: session } = useSession({
 		required: true,
 		onUnauthenticated() {
-			signIn(undefined, { callbackUrl: "/account" });
+			signIn(undefined, { callbackUrl: "/" });
 		},
 	});
+	console.log(props);
 	return (
 		<Layout title={"My Account | Autohub"}>
 			<AccountContainer>

@@ -9,6 +9,7 @@ import {
 } from "react-icons/hi";
 import Modal from "./Modal";
 import UserDetailsForm from "./UserDetailsForm";
+import { User } from "../pages/account";
 
 const AccountDetailsContainer = styled.div`
 	background-color: #13151d;
@@ -70,25 +71,7 @@ const EditButton = styled.button`
 	}
 `;
 
-type UserProps = {
-	image: string | null;
-	email: string | null;
-	name: string | null;
-	contactNumber: string | null;
-	address: [
-		{
-			firstLine: string;
-			secondLine: string | null;
-			thirdLine: string | null;
-			city: string;
-			county: string | null;
-			postcode: string;
-			country: string;
-		}
-	];
-};
-
-const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
+const AccountData = ({ user }: { user: User }) => {
 	const [showModal, setShowModal] = useState(false);
 
 	const { data: session } = useSession();
@@ -138,7 +121,7 @@ const AccountData: React.FC<{ user: UserProps }> = ({ user }) => {
 				show={showModal}
 				setShow={setShowModal}
 			>
-				<UserDetailsForm />
+				<UserDetailsForm user={user} />
 			</Modal>
 		</AccountDetailsContainer>
 	);
